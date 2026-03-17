@@ -31,17 +31,14 @@ steps:
     trivy image $(IMAGE_NAME):v1
   displayName: Trivy Security Scan
 
-- script: |
-    export AZURE_CONFIG_DIR=/tmp/.azure
-
-    az login --service-principal \
-      -u $(AZURE_CLIENT_ID) \
-      -p $(AZURE_CLIENT_SECRET) \
-      --tenant $(AZURE_TENANT_ID)
-
-    az account set --subscription $(AZURE_SUBSCRIPTION_ID)
-
-  displayName: Azure CLI Login
+- task: AzureCLI@2
+  displayName: Azure Login + ACR Login
+  inputs:
+    azureSubscription: 'azure-sc'   # your service connection
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      az acr login --name $(ACR_NAME)
 - script: |
     az acr login --name $(ACR_NAME)
   displayName: Login to ACR
