@@ -5,8 +5,7 @@ pool:
   name: SelfHostedPool
 
 variables:
-  ACR_NAME: prasadacrb8hdsh
-  IMAGE_NAME: board-app
+- group: New variable group 17-Mar
 
 steps:
 
@@ -20,7 +19,7 @@ steps:
 - script: |
     cd board
     mvn sonar:sonar \
-      -Dsonar.host.url=http://20.104.26.240:9000 \
+      -Dsonar.host.url=$(SONAR_HOST_URL) \
       -Dsonar.login=$(SONAR_TOKEN)
   displayName: SonarQube Scan
 
