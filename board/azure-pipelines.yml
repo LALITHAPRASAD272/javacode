@@ -39,9 +39,6 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       az acr login --name prasadacr3dbbzl
-- script: |
-    az acr login --name $(ACR_NAME)
-  displayName: Login to ACR
 
 - script: |
     docker tag $(IMAGE_NAME):v1 $(ACR_NAME).azurecr.io/$(IMAGE_NAME):v1
