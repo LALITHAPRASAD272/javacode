@@ -32,13 +32,13 @@ steps:
   displayName: Trivy Security Scan
 
 - task: AzureCLI@2
-  displayName: Azure Login + ACR Login
+  displayName: Login to ACR
   inputs:
-    azureSubscription: 'azure-sc'   # your service connection
+    azureSubscription: 'azure-sc'   # your service connection name
     scriptType: bash
     scriptLocation: inlineScript
     inlineScript: |
-      az acr login --name $(ACR_NAME)
+      az acr login --name prasadacr3dbbzl
 - script: |
     az acr login --name $(ACR_NAME)
   displayName: Login to ACR
