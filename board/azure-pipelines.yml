@@ -49,6 +49,6 @@ steps:
   displayName: Push Image
 
 - script: |
-    kubectl apply -f javacode/board/k8s/deployment.yaml
-    kubectl apply -f javacode/board/k8s/service.yaml
+    kubectl apply -f javacode/javacode/board/k8s/deployment.yaml
+    kubectl apply -f javacode/javacode/board/k8s/service.yaml
   displayName: Deploy to AKS
