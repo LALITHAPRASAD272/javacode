@@ -32,13 +32,16 @@ steps:
   displayName: Trivy Security Scan
 
 - task: AzureCLI@2
-  displayName: Login to ACR
+  displayName: Connect to AKS
   inputs:
     azureSubscription: 'azure-sc'   # your service connection name
     scriptType: bash
     scriptLocation: inlineScript
     inlineScript: |
-      az acr login --name prasadacr3dbbzl
+      az aks get-credentials \
+        --resource-group prasad-rg \
+        --name $(AKS_CLUSTER) \
+        --overwrite-existing
 
 - script: |
     docker tag $(IMAGE_NAME):v1 $(ACR_NAME).azurecr.io/$(IMAGE_NAME):v1
