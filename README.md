@@ -56,9 +56,6 @@ board/
 - Kubernetes-based deployment
 - Real-time monitoring and observability
 
-## 📸 Screenshots
-
-(Add pipeline, Grafana, and deployment screenshots here)
 
 ## 👨‍💻 Author
 
